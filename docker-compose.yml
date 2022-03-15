@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  mongo1:
+    container_name: mongo1
+    image: mongo:5.0
+    volumes:
+      - ./mongors/data1:/data/db
+      - ./scripts:/scripts
+    networks:
+      - mongors-network
+    ports:
+      - 27001:27017
+    links:
+      - mongo2
+      - mongo3
+    restart: always
+    #entrypoint: [ "/usr/bin/bash", "/scripts/init.sh" ]
+    entrypoint: ["/usr/bin/mongod", "--bind_ip_all", "--replSet", "csrs"]
+  mongo2:
+    container_name: mongo2
+    image: mongo:5.0
+    volumes:
+      - ./mongors/data2:/data/db
+      - ./scripts:/scripts
+    networks:
+      - mongors-network
+    ports:
+      - 27002:27017
+    restart: always
+    #entrypoint: [ "/usr/bin/bash", "/scripts/init.sh" ]
+    entrypoint: ["/usr/bin/mongod", "--bind_ip_all", "--replSet", "csrs"]
+  mongo3:
+    container_name: mongo3
+    image: mongo:5.0
+    volumes:
+      - ./mongors/data3:/data/db
+      - ./scripts:/scripts
+    networks:
+      - mongors-network
+    ports:
+      - 27003:27017
+    restart: always
+    #entrypoint: [ "/usr/bin/bash", "/scripts/init.sh" ]
+    entrypoint: ["/usr/bin/mongod", "--bind_ip_all", "--replSet", "csrs"]
+networks:
+  mongors-network:
+    driver: bridge

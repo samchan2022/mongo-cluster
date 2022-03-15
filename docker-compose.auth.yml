@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  mongo1:
+    entrypoint: [ "/usr/bin/bash", "/scripts/start.sh" ]
+  mongo2:
+    entrypoint: [ "/usr/bin/bash", "/scripts/start.sh" ]
+  mongo3:
+    entrypoint: [ "/usr/bin/bash", "/scripts/start.sh" ]
