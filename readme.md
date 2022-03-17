@@ -1,6 +1,6 @@
 Introduction
 ---------------------------------------------------
-The goal of the project is to provide a simple download and run mongo cluster in single host for rapid mongo cluster testing.
+The goal of the project is to provide a simple download and run mongo cluster in single host for rapid mongo cluster with authentication for testing.
 
 Pre-requisites
 ---------------------------------------------------
@@ -46,13 +46,13 @@ Step 3: Start the mongo cluster
 * For Linux
 
 `
-sh dbstart.sh
+sh run_db_auth.sh
 `
 
 * For Window (powershell)
 
 `
-. win_dbstart.ps1
+. win_db_auth.ps1
 `
 
 Remove the database
